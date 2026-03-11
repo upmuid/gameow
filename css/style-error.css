@@ -1,0 +1,368 @@
+/* =========================================================
+   Base
+========================================================= */
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+}
+
+html, body{
+  height: 100%;
+}
+
+body{
+  margin: 0;
+  background: #ffffff; /* 화면 밖은 흰색 */
+  font-family: "Pretendard", sans-serif;
+}
+/* =========================================================
+   Layout
+========================================================= */
+#index{
+  width: 100%;
+  min-height: 100svh;
+  background: #ffffff; /* wrap 바깥은 흰색 */
+}
+
+.wrap{
+  width: 100%;
+  height: 100svh;     /* ✅ 추가: content 스크롤 기준 높이 */
+  min-height: 0;
+  background: #f4f4f4;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+}
+
+/* content만 스크롤되게 */
+.content{
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+   min-height: 0; 
+
+  -webkit-overflow-scrolling: touch;
+
+
+  -ms-overflow-style: none; /* IE/Edge legacy */
+  scrollbar-width: none;    /* Firefox */
+
+
+  scrollbar-gutter: auto;
+
+}
+.con.error{
+  flex: 1;                     /* content 안 남은 높이 차지 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;         /* 가로 중앙 */
+  justify-content: center;     /* 세로 중앙 */
+  gap: 1.875rem;               /* 기존 값 유지 */
+  padding: 1rem;
+  width: 100%;
+}
+
+
+/* ✅ Chrome/Safari */
+.content::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+}
+/* =========================================================
+   Nav
+========================================================= */
+.nav{
+  height: 3.5rem;                 /* 56px */
+  padding: 1rem;       
+  background: #f4f4f4;
+}
+
+.nav__list{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;                      /* 16px */
+}
+
+.nav__left,
+.nav__center,
+.nav__right{
+  display: flex;
+  align-items: center;
+}
+
+.nav__logo{
+  display: block;
+  width: 1.5rem;                  /* 24px */
+  height: 1.5rem;                 /* 24px */
+  border-radius: 0.25rem;         /* 4px */
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.nav__logo img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.nav__center{
+  flex: 1;
+  justify-content: center;
+}
+
+.nav__title{
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.25rem;             /* 20px */
+  line-height: 1.5rem;            /* 24px */
+  letter-spacing: -0.01875rem;    /* -0.3px */
+  color: #333333;
+}
+
+.nav__search{
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  display: grid;
+  place-items: center;
+}
+
+.nav__search img{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* =========================
+   Error Page
+========================= */
+
+
+.error-obj{
+ width: 12.5rem;   /* 200px */
+  height: 10.3125rem; /* 165px */
+  flex-shrink: 0;
+  margin: 0 auto;
+
+}
+
+.error-obj__img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain; 
+}
+
+
+
+/* 텍스트 */
+.head-txt{
+  margin: 0;
+  color: #414141;
+  text-align: center;
+  font-family: "Pretendard-Medium", sans-serif;
+  font-size: 1.5rem;           /* 24px */
+  line-height: 2.25rem;        /* 36px */
+  letter-spacing: -0.01875rem; /* -0.3px */
+  font-weight: 500;
+}
+
+.main-txt{
+  margin: 0;
+  color: #888888;
+  text-align: center;
+  font-family: "Pretendard-Medium", sans-serif;
+  font-size: 0.875rem;         /* 14px */
+  line-height: 1.5rem;         /* 24px */
+  letter-spacing: -0.01875rem;
+  font-weight: 500;
+}
+
+
+
+/* =========================
+   Error bottom button area
+========================= */
+.error-actions{
+  padding: 1rem;          /* 16px */
+  margin-top: auto;       
+  background: transparent;
+}
+
+/* button */
+.error-btn{
+  width: 100%;
+  border: 0;
+  border-radius: 0.5rem;  /* 8px */
+  padding: 0.875rem 0;    /* 14px 0 */
+
+  background: #5a48c0;
+  color: #ffffff;
+
+  font-family: "Pretendard-Bold", sans-serif;
+  font-size: 1rem;        /* 16px */
+  line-height: 1.5rem;    /* 24px */
+  letter-spacing: -0.01875rem;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.error-btn:active{
+  transform: translateY(1px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.footer{
+  padding: 1rem;              /* 16px */
+}
+
+.footer-header{
+  margin: 0 0 0.5rem;         /* 아래 여백 */
+  color: #333;
+  font-size: 0.875rem;        /* 14px */
+  line-height: 1.625rem;      /* 26px */
+  letter-spacing: -0.01875rem;
+  font-weight: 700;
+}
+
+.footer-list{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;              
+}
+
+.footer-list li{
+  position: relative;
+  padding-left: 0.75rem;     
+  color: #333;
+  font-size: 0.875rem;        /* 14px */
+  line-height: 1.375rem;      /* 22px */
+  letter-spacing: -0.01875rem;
+  font-weight: 400;
+}
+
+.footer-list li::before{
+  content: "·";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #333;
+}
+
+
+
+
+
+
+/* =========================================================
+   Footer 
+========================================================= */
+.footer-sign{
+  padding: 1rem 1.25rem;
+  width: 100%;
+  background: #f4f4f4;
+}
+
+.footer-sign__row{
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.footer-sign__brand{
+  margin: 0;
+  flex: 1;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  font-weight: 700;
+  color: #333333;
+}
+
+.footer-sign__copy{
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  font-weight: 400;
+  color: #999999;
+}
+
+.footer-sign__links{
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.footer-sign__links a{
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  font-weight: 700;
+  color: #333;
+  text-decoration: none;
+}
+
+
+
+/* =========================================================
+   Desktop preview only
+========================================================= */
+@media (min-width: 580px){
+  #index{
+    
+  }
+  .footer-sign{
+    width: 28.75rem;   /* 460px */
+    margin: 0 auto;    /* 가운데 */
+  
+ }
+
+
+  .wrap{
+    width: 28.75rem;
+    margin: 0 auto;
+
+    height: 100svh;      /* ✅ 추가 */
+    overflow: hidden;    /* ✅ (base에 있지만 명시해도 안전) */
+  }
+
+  .content{
+
+  }
+}

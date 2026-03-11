@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+  <link rel="stylesheet" href="css/style-normal.css" type="text/css" />
+  <link rel="stylesheet" href="css/style-detail.css" type="text/css" />
+  <title>멀티미션</title>
+</head>
+
+<body>
+  <div id="index" class="index">
+    <div class="wrap">
+        <!-- Header / Nav -->
+        <header class="header">
+          <nav class="nav" aria-label="상단 내비게이션">
+            <ul class="nav__list">
+              <li class="nav__left">
+                <a class="nav__logo" href="/" aria-label="홈">
+                  <img src="imgs/image-10.png" alt="앱 로고" />
+                </a>
+              </li>
+
+              <li class="nav__center">
+                <p class="nav__title">미션상세</p>
+              </li>
+
+              <li class="nav__right">
+                <a class="nav__logo" href="index.html" aria-label="홈">
+                  <img src="imgs/home.svg" alt="" />
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+
+<!-- data-detail-type="multi"
+ data-detail-type="level"
+ 상세 버전 두가지로 나눠서 작업
+ -->
+
+ <!-- content mission-detail hero-type--wide
+  content mission-detail hero-type--thumb
+  content mission-detail hero-type--thumb
+ -->
+<main class="content mission-detail hero-type--wide" id="content" data-detail-type="multi">
+<!-- <main class="content mission-detail" id="content" data-detail-type="level"> -->
+    <!-- 기본 : 가로형 -->
+    <section class="hero hero--wide">
+        <div class="hero__banner">
+        <img class="hero__img" src="imgs/banner-img.png" alt="" />
+        </div>
+    </section>
+    <!-- 썸네일형 -->
+    <!-- <section class="hero hero--list" hidden>
+    <div class="hero-list">
+        <a class="hero-list__item" href="mission-detail.html" aria-label="명일방주 미션 상세">
+        <div class="hero-list__thumb">
+            <img class="hero-list__img" src="imgs/mission-icon0.png" alt="" />
+        </div>
+
+        <div class="hero-list__body">
+            <p class="hero-list__title">[멀티 액션] 명일방주 : 여명의 전주곡[멀티 액션] 명일방주 : 여명의 전주곡[멀티 액션] 명일방주 : 여명의 전주곡</p>
+            <p class="hero-list__sub">멀티미션 달성하고 리워드 받기</p>
+        </div>
+        </a>
+    </div>
+    </section> -->
+    <!-- 큰이미지형 -->
+    <!-- <section class="hero hero--wide">
+    <div class="hero__banner hero__banner--wide">
+        <img class="hero__img hero__img--wide" src="imgs/banner-fullimg.jpg" alt="" />
+    </div>
+    </section> -->
+
+ <!-- 공통 디테일 내용 -->
+    <!-- 미션 시작전 처음 뜨는 배너 -->
+      <section class="note-area" aria-label="미션 안내">
+    <div class="note note--1">
+        <img class="note-icon" src="imgs/TimeCircle.svg" alt="" aria-hidden="true" />
+        <p class="note-txt">미션 참여하고 리워드 받아보세요.</p>
+    </div>
+
+    <!-- 미션 시작하면 바뀌는 배너 60일 ~ 01일까지 -->
+    <!-- <div class="note note--2" hidden>
+        <img class="note-icon" src="imgs/TimeCircle.svg" alt="" aria-hidden="true" />
+        <p class="note-txt">앱 다운로드 후</p>
+        <p class="note-txt note-days">60일</p>
+        <p class="note-txt">이내에 미션을 완료해야 해요.</p>
+    </div> -->
+    <!-- 미션 참여 불가시 바뀌는 배너 -->
+    <!-- <div class="note note--3" hidden>
+        <img class="note-icon" src="imgs/lucide_circle-alert.svg" alt="" aria-hidden="true" />
+        <p class="note-txt">해당 게임에 대한 참여가 불가합니다.</p>
+    </div> -->
+    <!-- 참여중일떄 (3일 이하로 남은 Case) -->
+    <!-- <div class="note note--4" hidden>
+        <img class="note-icon" src="imgs/TimeCircle_red.svg" alt="" aria-hidden="true" />
+        <p class="note-txt">앱 다운로드 후 {3일} 이내에 미션을 완료해야 해요.</p>
+    </div> -->
+    </section>
+</section>
+
+<!-- 멀티 미션 상세페이지 -->
+<!-- 진행도 섹션 -->
+<section class="detail-case detail-case--multi">
+<section class="progressbar" id="progressbar" data-total="5" data-done="0">
+  <div class="progressbar__head">
+    <p class="progressbar__title">진행도</p>
+    <p class="progressbar__count">
+      <!-- DEV: 최종 미션 수 바인딩 -->
+      <span class="progressbar__done">0</span>/<span class="progressbar__total">5</span>개 완료
+    </p>
+  </div>
+  <div class="progressbar__track" aria-hidden="true">
+    <div class="progressbar__fill" style="width:0%"></div>
+  </div>
+</section>
+
+<section class="actions" aria-label="버튼 영역">
+  <!-- DEV: 해당 게임 링크로 이동 하는 btn-->
+<a class="btn btn--primary" href="#">참여하고 <span class="btn__amount">14,602원</span> 받기</a>
+
+  <!-- DEV: 멀티미션 리스트 페이지로 이동하는 btn -->
+  <a class="btn btn--ghost" href="index.html" aria-label="미션 리스트 보러가기">미션 리스트 보러가기</a>
+</section>
+
+<section class="detail">
+  <div class="detail-head ">
+    <!-- DEV: 게임명 바인딩 -->
+    <p class="detail-title">[멀티 액션] 명일방주 : 여명의 전주곡</p>
+    <p class="detail-sub">멀티미션 달성하고 리워드 받기</p>
+  </div>
+
+  <div class="detail-sec">
+    <p class="detail-sec-tit">참여 조건</p>
+
+    <ul class="detail-list">
+      <li class="detail-item">
+        <span class="detail-dot" aria-hidden="true"></span>
+        <p class="detail-txt">최초로 앱을 설치하고 미션을 달성한 경우에만 혜택이 제공됩니다.</p>
+      </li>
+
+      <li class="detail-item">
+        <span class="detail-dot" aria-hidden="true"></span>
+        <p class="detail-txt">앱 설치, 실행 후 페이지로 돌아와 ‘참여상태’를 반드시 확인 하세요.</p>
+      </li>
+    </ul>
+  </div>
+
+</section>
+
+<section class="status" aria-label="미션 현황">
+  <!-- 헤더: 타이틀 + 안내문 -->
+  <div class="status-head">
+    <p class="status-tit">미션 현황</p>
+
+    <p class="status-msg">
+      <!-- DEV: 남은 기간(일) 바인딩 -->
+      <span class="status-em status-days">60일</span>
+      <span>이내에</span>
+      <!-- DEV: 목표 미션 개수 바인딩 -->
+      <span class="status-em status-goal">5개</span><span>의 미션을 완료하세요.</span>
+    </p>
+  </div>
+
+  <!-- 리스트: 각 row는 '상태에 따라 스타일 변경' -->
+  <div class="status-list">
+
+
+
+    <!-- DEV:
+    status-row에 is-done 클래스가 붙으면 "완료 UI"로 전환
+    - 미완료: todo 아이콘 + status-reward 노출
+    - 완료: done 아이콘 + "미션 완료"(status-right) 노출
+    -->
+    <!-- 최초 오픈 -->
+    <div class="status-row" data-done="false">
+    <div class="status-left">
+        <!-- DEV: 미완료일 때 노출 -->
+        <img class="status-ico status-ico--todo" src="imgs/mission-todo.svg" alt="" aria-hidden="true" />
+        <!-- DEV: 완료 상태에서만 노출 -->
+        <img class="status-ico status-ico--done" src="imgs/mission-done.svg" alt="" aria-hidden="true" />
+        <p class="status-label">최초 오픈</p>
+    </div>
+
+    <!-- DEV: 미완료 상태에서만 노출, 보상 금액 바인딩 -->
+    <p class="status-reward">720원</p>
+
+    <!-- 완료일 때 텍스트 -->
+    <p class="status-right">미션 완료</p>
+    </div>
+
+    
+    <!-- row: 레벨 5 클리어 -->
+    <div class="status-row" data-done="false">
+    <div class="status-left">
+        <!-- DEV: 미완료일 때 노출 -->
+        <img class="status-ico status-ico--todo" src="imgs/mission-todo.svg" alt="" aria-hidden="true" />
+        <!-- DEV: 완료 상태에서만 노출 -->
+        <img class="status-ico status-ico--done" src="imgs/mission-done.svg" alt="" aria-hidden="true" />
+        <p class="status-label">레벨 5 클리어</p>
+    </div>
+
+    <!-- DEV: 미완료 상태에서만 노출, 보상 금액 바인딩 -->
+    <p class="status-reward">720원</p>
+
+    <!-- 완료일 때 텍스트 -->
+    <p class="status-right">미션 완료</p>
+    </div>
+
+    <!-- row: 레벨 10 클리어 -->
+    <div class="status-row" data-done="false">
+    <div class="status-left">
+        <!-- DEV: 미완료일 때 노출 -->
+        <img class="status-ico status-ico--todo" src="imgs/mission-todo.svg" alt="" aria-hidden="true" />
+        <!-- DEV: 완료 상태에서만 노출 -->
+        <img class="status-ico status-ico--done" src="imgs/mission-done.svg" alt="" aria-hidden="true" />
+        <p class="status-label">레벨 5 클리어</p>
+    </div>
+
+    <!-- DEV: 미완료 상태에서만 노출, 보상 금액 바인딩 -->
+    <p class="status-reward">210원</p>
+
+    <!-- 완료일 때 텍스트 -->
+    <p class="status-right">미션 완료</p>
+    </div>
+
+    <!-- row: 레벨 15 클리어 -->
+    <div class="status-row" data-done="false">
+    <div class="status-left">
+        <!-- DEV: 미완료일 때 노출 -->
+        <img class="status-ico status-ico--todo" src="imgs/mission-todo.svg" alt="" aria-hidden="true" />
+        <!-- DEV: 완료 상태에서만 노출 -->
+        <img class="status-ico status-ico--done" src="imgs/mission-done.svg" alt="" aria-hidden="true" />
+        <p class="status-label">레벨 5 클리어</p>
+    </div>
+
+    <!-- DEV: 미완료 상태에서만 노출, 보상 금액 바인딩 -->
+    <p class="status-reward">3,600원</p>
+
+    <!-- 완료일 때 텍스트 -->
+    <p class="status-right">미션 완료</p>
+    </div>
+
+    <!-- row: 레벨 20 클리어 -->
+    <div class="status-row" data-done="false">
+    <div class="status-left">
+        <!-- DEV: 미완료일 때 노출 -->
+        <img class="status-ico status-ico--todo" src="imgs/mission-todo.svg" alt="" aria-hidden="true" />
+        <!-- DEV: 완료 상태에서만 노출 -->
+        <img class="status-ico status-ico--done" src="imgs/mission-done.svg" alt="" aria-hidden="true" />
+        <p class="status-label">레벨 5 클리어</p>
+    </div>
+
+    <!-- DEV: 미완료 상태에서만 노출, 보상 금액 바인딩 -->
+    <p class="status-reward">10,000원</p>
+
+    <!-- 완료일 때 텍스트 -->
+    <p class="status-right">미션 완료</p>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <p class="footer-header">유의사항</p>
+
+  <ul class="footer-list">
+    <li>참여 상태는 실시간으로 변경되지 않습니다. 확인 대기 상태인 경우 앱을 바로 삭제하지 마시고 다시 참여하기 버튼을 눌러 게임을 일정 시간 이상 플레이해 주세요.</li>
+    <li>미션을 완료했음에도 혜택이 지급되지 않는 경우 더 이상 진행하지 마시고 다른 광고를 참여하거나 하단 문의하기를 통해 문의해 주세요.</li>
+    <li>광고 클릭부터 보상을 얻을 때까지 같은 브라우저로 진행하지 않으면 보상을 받을 수 없습니다.</li>
+    <li>이미 게임을 플레이하고 있는 분은 보상을 받을 수 없습니다. 기존 설치/로그인 이력이 있는 경우 보상이 지급되지 않습니다.</li>
+    <li>한국 외에서 접속 또는 한국 이외의 IP를 이용하여 접속하시는 경우, 보상을 받을 수 없습니다.</li>
+    <li>보상 지급까지 시간이 소요될 수 있으며 참여 도중 광고가 종료된 경우 혜택이 지급되지 않을 수 있습니다.</li>
+  </ul>
+</footer>
+
+</section>
+
+<!-- 레벨 달성 상세페이지 -->
+  <section class="detail-case detail-case--level is-hidden">
+    <section class="actions" aria-label="버튼 영역">
+      <a class="btn btn--primary" href="#">참여하고 <span class="btn__amount">14,602원</span> 받기</a>
+      <a class="btn btn--ghost" href="index.html" aria-label="미션 리스트 보러가기">미션 리스트 보러가기</a>
+    </section>
+
+    <section class="detail">
+      <div class="detail-head">
+        <p class="detail-title">[레벨 달성] 파이널삼국지2</p>
+        <p class="detail-sub">레벨 달성하고 리워드 받기</p>
+      </div>
+
+      <div class="detail-sec">
+        <p class="detail-sec-tit">참여 방법</p>
+
+        <ul class="detail-list">
+          <li class="detail-item">
+            <span class="detail-dot" aria-hidden="true"></span>
+            <p class="detail-txt">파이널삼국지2 최초 오픈하고 캐릭터생성 완료하면 리워드 지급!</p>
+          </li>
+          <li class="detail-item">
+            <span class="detail-dot" aria-hidden="true"></span>
+            <p class="detail-txt">신규 유저만 참여 가능합니다.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+<footer class="footer">
+  <p class="footer-header">유의사항</p>
+
+  <ul class="footer-list">
+    <li>[이벤트 참여 대상자가 아닙니다] 팝업이 확인 되는 경우, 아래 경로 통해 광고식별자 설정을 부탁드립니다.</li>
+    <li>설정 후에도 동일 팝업 발생될 시 이용문의 통해 글을 남겨주세요.</li>
+    <li>AOS : 설정 > 보안 및 개인정보 보호 > 기타 보안설정 >광고 > 광고 ID 재설정</li>
+    <li>iOS : 설정> 개인정보 보호 및 보안 > 추적</li>
+    <li>해당 이벤트 참여 완료시 혜택이 지급되며, 기존의 이벤트 참여 이력이 있는 경우 혜택 지급이 되지 않습니다.</li>
+    <li>네트워크 장애가 발생하는 경우, 혜택 지급이 지연될 수 있습니다.</li>
+    <li>광고 적립을 통해 전환된 혜택은 재전환 및 전환 취소 되지 않으며, 유효기간 내 미사용 혜택은 자동 소멸될 수 있습니다.</li>
+    <li>WIFI 환경이 아닌 경우 데이터 이용료가 발생할 수 있습니다.</li>
+    <li>해당 이벤트는 사정에 따라서 사전 공지 없이 내용이 수정되거나 종료될 수 있습니다.</li>
+    <li>해당 이벤트는 (주)핀크럭스가 제공합니다.</li>
+    <li>해당 이벤트에 대한 문의 사항 발생시 (주)핀크럭스로 직접 문의하시면 됩니다.</li>
+    <li>문의방법: 광고리스트 내 이용문의 메뉴 이용 </li>
+  </ul>
+</footer>
+
+  </section>
+
+<!-- <footer class="footer">
+  <p class="footer-header">유의사항</p>
+
+  <ul class="footer-list">
+    <li>참여 상태는 실시간으로 변경되지 않습니다. 확인 대기 상태인 경우 앱을 바로 삭제하지 마시고 다시 참여하기 버튼을 눌러 게임을 일정 시간 이상 플레이해 주세요.</li>
+    <li>미션을 완료했음에도 혜택이 지급되지 않는 경우 더 이상 진행하지 마시고 다른 광고를 참여하거나 하단 문의하기를 통해 문의해 주세요.</li>
+    <li>광고 클릭부터 보상을 얻을 때까지 같은 브라우저로 진행하지 않으면 보상을 받을 수 없습니다.</li>
+    <li>이미 게임을 플레이하고 있는 분은 보상을 받을 수 없습니다. 기존 설치/로그인 이력이 있는 경우 보상이 지급되지 않습니다.</li>
+    <li>한국 외에서 접속 또는 한국 이외의 IP를 이용하여 접속하시는 경우, 보상을 받을 수 없습니다.</li>
+    <li>보상 지급까지 시간이 소요될 수 있으며 참여 도중 광고가 종료된 경우 혜택이 지급되지 않을 수 있습니다.</li>
+  </ul>
+</footer> -->
+
+
+
+  </main>
+
+<!-- 상세페이지 오류 안내 모달 -->
+<div class="detail-modal detail-modal--ineligible" id="detailErrorModalIneligible" role="dialog" aria-modal="true" aria-labelledby="detailErrorTitleIneligible" hidden >
+  <div class="detail-modal__dim" data-detail-modal-close="ineligible"></div>
+
+  <div class="detail-modal__dialog" role="document">
+    <div class="detail-modal__content">
+      <img class="detail-modal__icon" src="imgs/alert-f.svg" alt="" aria-hidden="true" />
+
+      <p class="detail-modal__title" id="detailErrorTitleIneligible">
+        이벤트 참여 대상자가 아닙니다.
+      </p>
+
+      <p class="detail-modal__desc">
+        상세페이지 유의사항 확인 바랍니다.
+      </p>
+    </div>
+
+    <button type="button" class="detail-modal__confirm" data-detail-modal-close="ineligible">
+      확인
+    </button>
+  </div>
+</div>
+
+<div class="detail-modal detail-modal--auth-error" id="detailErrorModalAuth" role="dialog" aria-modal="true" aria-labelledby="detailErrorTitleAuth" hidden >
+  <div class="detail-modal__dim" data-detail-modal-close="auth"></div>
+
+  <div class="detail-modal__dialog" role="document">
+    <div class="detail-modal__content">
+      <img class="detail-modal__icon" src="imgs/alert-f2.svg" alt="" aria-hidden="true" />
+
+      <p class="detail-modal__title" id="detailErrorTitleAuth">
+        접근 인증 오류입니다.
+      </p>
+
+      <p class="detail-modal__desc">
+        참여한 서비스로 돌아가 다시 참여해주세요.
+      </p>
+    </div>
+
+    <button
+      type="button"
+      class="detail-modal__confirm"
+      data-detail-modal-close="auth"
+    >
+      확인
+    </button>
+  </div>
+</div>
+
+<div class="detail-modal detail-modal--not-found" id="detailErrorModalNotFound" role="dialog" aria-modal="true" aria-labelledby="detailErrorTitleNotFound" hidden >
+  <div class="detail-modal__dim" data-detail-modal-close="notfound"></div>
+
+  <div class="detail-modal__dialog" role="document">
+    <div class="detail-modal__content">
+      <img class="detail-modal__icon" src="imgs/alert-f.svg" alt="" aria-hidden="true" />
+
+      <p class="detail-modal__title" id="detailErrorTitleNotFound">
+        페이지를 찾을 수 없습니다.
+      </p>
+
+      <p class="detail-modal__desc">
+        요청하신 페이지가 존재하지 않거나<br />
+        접근이 유효하지 않습니다.
+      </p>
+    </div>
+
+    <button type="button" class="detail-modal__confirm" data-detail-modal-close="notfound">
+      확인
+    </button>
+  </div>
+</div>
+
+
+<!-- 플로팅 토스트 -->
+<div class="floating-toast is-hidden" id="floatingToast" aria-live="polite">
+  <p class="floating-toast__text">
+    <span class="floating-toast__emoji">🔥</span>
+    <span class="floating-toast__body">미션 완료 시간이 </span>
+    <span class="floating-toast__accent">D-3</span>
+    <span class="floating-toast__mark">일 남았어요!</span>
+  </p>
+</div>
+
+    </div>
+      <footer class="footer-sign">
+        <div class="footer-sign__row">
+          <p class="footer-sign__brand">PINCRUX</p>
+          <p class="footer-sign__copy">Copyright PINCRUX. All rights reserved.</p>
+        </div>
+        <div class="footer-sign__links">
+          <a href="#" target="_blank" rel="noopener">이용문의</a>
+        </div>
+      </footer>
+  </div>
+    
+
+
+
+<script>
+(function () {
+  const blocks = document.querySelectorAll('.m-progress');
+  if (!blocks.length) return;
+
+  blocks.forEach((el) => {
+    const done = Number(el.dataset.done || 0);
+    const total = Math.max(1, Number(el.dataset.total || 1)); // 0 방지
+    const pct = Math.max(0, Math.min(100, (done / total) * 100));
+
+    // 텍스트 업데이트
+    const countEl = el.querySelector('[data-role="count"]');
+    if (countEl) countEl.textContent = `${done}/${total}개`;
+
+    // 바 업데이트
+    const fill = el.querySelector('.m-progress__fill');
+    if (fill) fill.style.width = `${pct}%`;
+
+    // a11y 업데이트
+    const bar = el.querySelector('.m-progress__bar');
+    if (bar) {
+      bar.setAttribute('aria-valuemax', String(total));
+      bar.setAttribute('aria-valuenow', String(done));
+    }
+  });
+})();
+
+(function(){
+  const progressbar = document.getElementById('progressbar');
+  const rows = Array.from(document.querySelectorAll('.status-row'));
+
+  function updateProgress(){
+    const doneCount = rows.filter(r => r.classList.contains('is-done')).length;
+    const totalCount = Number(progressbar?.dataset.total ?? rows.length);
+
+    if (!progressbar) return;
+
+    progressbar.querySelector('.progressbar__done').textContent = doneCount;
+    progressbar.querySelector('.progressbar__total').textContent = totalCount;
+
+    const pct = totalCount > 0 ? (doneCount / totalCount) * 100 : 0;
+    progressbar.querySelector('.progressbar__fill').style.width = `${pct}%`;
+  }
+
+
+  /**
+   * DEV:
+   * - 퍼블에서는 동작 확인을 위해 클릭 토글을 넣었으나, 실제 적용 시 제거했습니다.
+   * -> 주석 제거하면 어떻게 변하는지 확인 가능합니다. 참고용으로 확인 부탁드립니다.
+   * - 완료 상태는 서버/바인딩 값에 따라 각 row에 `.is-done` 클래스를 부여해 주세요.
+   * - 진행도는 `.status-row.is-done` 개수를 기준으로 계산됩니다.
+   * - total은 `#progressbar[data-total]` 우선, 없으면 rows.length를 사용합니다.
+   */
+//   rows.forEach(row => {
+//     row.addEventListener('click', () => {
+//       const isDone = row.classList.toggle('is-done');
+//       row.dataset.done = String(isDone); // 테스트용 가시성/상태값
+//       updateProgress();
+//     });
+//   });
+
+  updateProgress();
+})();
+
+(function () {
+  const root = document.querySelector('.mission-detail');
+  if (!root) return;
+
+  const type = root.dataset.detailType;
+  const multi = document.querySelector('.detail-case--multi');
+  const level = document.querySelector('.detail-case--level');
+
+  if (!multi || !level) return;
+
+  if (type === 'level') {
+    multi.classList.add('is-hidden');
+    level.classList.remove('is-hidden');
+  } else {
+    multi.classList.remove('is-hidden');
+    level.classList.add('is-hidden');
+  }
+})();
+
+
+  (function () {
+    const modalMap = {
+      ineligible: document.getElementById('detailErrorModalIneligible'),
+      auth: document.getElementById('detailErrorModalAuth'),
+      notfound: document.getElementById('detailErrorModalNotFound')
+    };
+
+    const TEST_MODAL = 'notfound'; 
+    // 'ineligible' | 'auth' | 'notfound' | ''
+
+    function openModal(key) {
+      const modal = modalMap[key];
+      if (!modal) return;
+      modal.hidden = false;
+    }
+
+    function closeModal(key) {
+      const modal = modalMap[key];
+      if (!modal) return;
+      modal.hidden = true;
+    }
+
+    Object.entries(modalMap).forEach(([key, modal]) => {
+      if (!modal) return;
+
+      const closeButtons = modal.querySelectorAll(`[data-detail-modal-close="${key}"]`);
+
+      closeButtons.forEach((button) => {
+        button.addEventListener('click', () => closeModal(key));
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+
+      Object.values(modalMap).forEach((modal) => {
+        if (modal && !modal.hidden) {
+          modal.hidden = true;
+        }
+      });
+    });
+
+    if (TEST_MODAL) {
+      openModal(TEST_MODAL);
+    }
+  })();
+
+  (function () {
+    const floatingToast = document.getElementById('floatingToast');
+    let floatingToastTimer = null;
+
+    if (!floatingToast) return;
+
+    function showFloatingToast(duration = 3000) {
+      clearTimeout(floatingToastTimer);
+
+      floatingToast.classList.remove('is-hidden', 'is-hide');
+      void floatingToast.offsetWidth;
+      floatingToast.classList.add('is-show');
+
+      floatingToastTimer = setTimeout(() => {
+        floatingToast.classList.remove('is-show');
+        floatingToast.classList.add('is-hide');
+
+        setTimeout(() => {
+          floatingToast.classList.remove('is-hide');
+          floatingToast.classList.add('is-hidden');
+        }, 400);
+      }, duration);
+    }
+
+    window.showFloatingToast = showFloatingToast;
+
+    /* 테스트용 */
+    showFloatingToast();
+  })();
+
+
+
+
+
+</script>
+
+
+
+
+</body>

@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+  <link rel="stylesheet" href="css/style-normal.css" type="text/css" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  
+  <title>멀티미션</title>
+</head>
+
+<body>
+  <div id="index" class="index">
+    <div class="wrap">
+      <!-- Header / Nav -->
+      <header class="header">
+        <nav class="nav" aria-label="상단 내비게이션">
+          <ul class="nav__list">
+            <!-- 진입한 업체의 아이콘이 표시 -->
+            <li class="nav__left">
+              <a class="nav__logo" href="/" aria-label="해당 홈으로 이동">
+                <img src="imgs/image-10.png" alt="앱 로고" />
+              </a>
+            </li>
+
+            <li class="nav__center">
+              <p class="nav__title">멀티미션</p>
+            </li>
+            <!-- 검색창 -->
+            <li class="nav__right">
+              <button type="button" class="nav__search" aria-label="검색">
+                <img src="imgs/search.svg" alt="" />
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Content (여기만 스크롤) -->
+      <main class="content" id="content">
+
+        <!-- Summary -->
+        <section class="summary" aria-label="누적 금액">
+          <p class="summary__kicker">게임미션 참여하고</p>
+          <div class="summary__row">
+            <!-- DEV: 누적/집계 금액 바인딩 -->
+            <p class="summary__amount">2,562,784</p>
+            <p class="summary__unit">원 받기</p>
+          </div>
+        </section>
+
+<!-- Fever Time -->
+<section class="fever-section" aria-label="피버 타임">
+  <div class="fever-card">
+
+    <div class="fever-state fever-state--default" id="feverDefault">
+      <div class="fever-card__head">
+        <div class="fever-card__title-wrap">
+          <p class="fever-card__title">FEVER TIME</p>
+<button type="button" class="fever-card__help" aria-label="FEVER TIME 안내" aria-haspopup="dialog" aria-controls="feverHelpModal"aria-expanded="false">
+  <img src="imgs/circle-help.svg" alt="" aria-hidden="true" />
+</button>
+        </div>
+        <p class="fever-card__desc">FEVER TIME에는 5시간 동안 10% 추가 적립!</p>
+      </div>
+
+      <div class="fever-card__status">
+        <p class="fever-card__time"> 남은 시간 <span id="feverTimeText">4:00:00</span>
+        </p>
+
+        <div class="fever-card__percent-wrap">
+          <p class="fever-card__percent">
+            <span id="feverPercentText">0</span>%
+          </p>
+          <img class="fever-card__loading" src="imgs/Spinner-0.7sec.svg" alt="" aria-hidden="true"/>
+        </div>
+      </div>
+
+      <div class="fever-card__gauge" role="progressbar" aria-label="FEVER 게이지" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <span class="fever-card__gauge-track"></span>
+
+        <span class="fever-card__gauge-fill" id="feverGaugeFill">
+          <span class="fever-card__gauge-shine"></span>
+          <span class="fever-card__gauge-glow"></span>
+          <span class="fever-card__gauge-thumb">
+            <span class="fever-card__gauge-thumb-core"></span>
+          </span>
+        </span>
+      </div>
+
+      <button type="button" class="fever-card__cta" id="feverCtaBtn">
+        광고 보고 FEVER 게이지 채우기
+      </button>
+    </div>
+
+    <!-- Fever Time 게이지100% ON 상태 -->
+<div class="fever-state fever-state--on is-hidden" id="feverOn">
+  <!-- <div class="fever-state fever-state--on" id="feverOn"> -->
+  <div class="fever-card__head">
+    <div class="fever-card__title-wrap">
+      <p class="fever-card__title">FEVER TIME ON!</p>
+<button type="button" class="fever-card__help" aria-label="FEVER TIME 안내" aria-haspopup="dialog" aria-controls="feverHelpModal"aria-expanded="false">
+  <img src="imgs/circle-help.svg" alt="" aria-hidden="true" />
+</button>
+    </div>
+    <p class="fever-card__desc">FEVER TIME에는 5시간 동안 10% 추가 적립!</p>
+    <p class="fever-card__bonus">🔥 현재 보너스 <span id="feverBonusText">5,800원</span></p>
+  </div>
+
+  <div class="fever-card__timer-banner">
+    <img class="fever-card__timer-icon" src="imgs/on-time.svg" alt="" aria-hidden="true" />
+    <p class="fever-card__timer-text">
+      피버타임이 <span id="feverOnTimeText">3:59:44</span> 남았어요!
+    </p>
+  </div>
+</div>
+
+<!-- Fever Time 게이지100% ON 상태 / 30분 남았을때 화면 -->
+<div class="fever-state fever-state--warning is-hidden" id="feverWarning">
+  <div class="fever-card__head">
+    <div class="fever-card__title-wrap">
+      <p class="fever-card__title fever-card__title--warning">FEVER TIME ON!</p>
+<button type="button" class="fever-card__help" aria-label="FEVER TIME 안내" aria-haspopup="dialog" aria-controls="feverHelpModal"aria-expanded="false">
+  <img src="imgs/circle-help.svg" alt="" aria-hidden="true" />
+</button>
+    </div>
+
+    <p class="fever-card__desc">FEVER TIME에는 5시간 동안 10% 추가 적립!</p>
+    <p class="fever-card__bonus fever-card__bonus--warning">
+      🔥 현재 보너스 <span id="feverWarningBonusText">5,800원</span>
+    </p>
+  </div>
+
+  <div class="fever-card__timer-banner fever-card__timer-banner--warning">
+    <img class="fever-card__timer-icon" src="imgs/on-time.svg" alt="" aria-hidden="true" />
+    <p class="fever-card__timer-text">
+      피버타임 종료까지 <span id="feverWarningTimeText">29:59</span> 남았어요!
+    </p>
+  </div>
+</div>
+
+<!-- Fever Time 종료 상태 -->
+<div class="fever-state fever-state--ended is-hidden" id="feverEnded">
+  <div class="fever-card__head">
+    <div class="fever-card__title-wrap">
+      <p class="fever-card__title">FEVER TIME 종료</p>
+      <button type="button" class="fever-card__help fever-card__help--expired" aria-label="보너스 수령 종료 안내" aria-haspopup="dialog" aria-controls="feverExpiredModal" aria-expanded="false" >
+        <img src="imgs/circle-help_bk.svg" alt="" aria-hidden="true" />
+      </button>
+    </div>
+
+    <p class="fever-card__desc">
+      적립된 보너스는 매일 13:00 까지만 받을 수 있어요.
+    </p>
+  </div>
+
+  <button type="button" class="fever-card__cta fever-card__cta--ended" id="feverEndedCtaBtn">
+    <span id="feverEndedRewardText">광고 보고 5,848원 받기</span>
+  </button>
+
+
+  <p class="fever-card__notice">
+    • 보너스 수령 가능 시간이 <span id="feverEndedTimeText">11:11</span> 남았어요
+  </p>
+</div>
+
+<!-- Fever Time 준비중 상태 -->
+<div class="fever-state fever-state--waiting is-hidden" id="feverWaiting">
+  <div class="fever-card__head">
+    <div class="fever-card__title-wrap">
+      <p class="fever-card__title fever-card__title--waiting">FEVER TIME 준비중</p>
+      <button type="button" class="fever-card__help fever-card__help--expired" aria-label="보너스 수령 종료 안내" aria-haspopup="dialog" aria-controls="feverExpiredModal" aria-expanded="false" >
+        <img src="imgs/circle-help_bk.svg" alt="" aria-hidden="true" />
+      </button>
+    </div>
+
+    <p class="fever-card__desc">
+      매일 5시간 동안 10% 추가적립을 받을 수 있어요
+    </p>
+  </div>
+
+
+  <div class="fever-card__timer-box" aria-label="다음 피버타임까지 남은 시간">
+    <p class="fever-card__timer-box-text" id="feverWaitingTimeText">01:15:35</p>
+  </div>
+</div>
+
+
+
+
+
+</div>
+  
+</section>
+
+
+
+
+
+        <!-- Progress (스크롤 시 축소/우측 sticky) -->
+         <!-- DEV: 진행중 미션 개수 바인딩 -->
+        <!-- <section class="progress" id="progress" aria-label="진행 중인 미션" role="button" tabindex="0">
+          <div class="progress__inner">
+            <div class="progress__icon" aria-hidden="true">
+              <img src="imgs/game0.svg" alt="" />
+            </div>
+
+            <p class="progress__label">진행 중인 미션</p>
+            <p class="progress__count">000</p>
+            
+          </div>
+        </section> -->
+
+        <!-- 진행 중 미션창일때 보이는 배너 화면 -->
+        <!-- <section class="progress" id="progressNew" aria-label="새미션">
+          <div class="progress__inner">
+            <div class="progress__icon" aria-hidden="true">
+              <img class="progress__badge" src="imgs/new_bage.svg" alt="new" />
+            </div>
+
+            <p class="progress__label">새로운 미션 완료하고 리워드 받기</p>
+          </div>
+        </section> -->
+
+        <!-- Item box -->
+        <section class="itembox" id="itembox" aria-label="미션 목록">
+          <!-- Tabs -->
+          <div class="tab-menu">
+            <div class="tab" role="tablist" aria-label="미션 필터">
+              <button type="button" class="tab__item is-active" data-tab="all" role="tab" aria-selected="true">
+                  <!-- DEV:
+                        - 'N' 배지는 '새 미션 존재 여부'에 따라 노출/비노출
+                        - 새 미션이 1개 이상이면 노출 (hasNewMission === true)
+                        - 새 미션이 없으면 렌더링하지 않거나 hidden 처리 -->
+                <img class="tab__badge" src="imgs/bage.svg" alt="" aria-hidden="true" />
+                <span class="tab__txt">전체</span>
+              </button>
+
+<button type="button" class="tab__item" data-tab="level" role="tab" aria-selected="false">
+  <span class="tab__txt">레벨 달성</span>
+</button>
+<button type="button" class="tab__item" data-tab="multi" role="tab" aria-selected="false">
+  <span class="tab__txt">멀티 미션</span>
+</button>
+            </div>
+          </div>
+
+          <!-- List -->
+          <div class="list-box" id="listBox">
+
+            <a class="list-item" href="mission-detail.html" data-id="1" data-type="level" aria-label="고블린 우드 미션 상세">
+              <div class="list-item__icon">
+                <img class="mission-icon" src="imgs/mission-icon0.png" alt="" />
+                <!-- 미션 진행 중 일 때만 ON -->
+                <span class="icon-badge" aria-hidden="true">
+                  <img src="imgs/game1.svg" alt="" />
+                </span>
+              </div>
+
+                <div class="mission">
+                <!-- ✅ 텍스트+리워드 덩어리(폭 줄어드는 대상) -->
+                <div class="mission__body">
+                    <div class="mission__group">
+                    <!-- DEV: 뷰포트/컨테이너 너비 기준, 텍스트가 넘어가면 말줄임표 (1줄 ellipsis) -->
+                    <p class="mission__title">고블린 우드 : 숲속 방치 타이쿤 (d-3뱃지있을때참고)</p>
+                    <p class="mission__desc">미션달성하고 리워드 받기</p>
+                    </div>
+
+                    <div class="reward">
+                    <span class="reward__label">최대</span>
+                    <span class="reward__value">2,562원</span>
+                    </div>
+                </div>
+
+                <!-- DEV: D-day 배지 노출 조건 (remainDays <= 3일 때만 렌더링) -->
+                <div class="mission__badge" aria-label="남은 기간 D-3">
+                    <span class="badge badge--dday">D-3</span>
+                </div>
+                </div>
+            </a>
+
+
+            <a class="list-item" href="mission-detail.html" data-id="2" data-type="multi" aria-label="고블린 우드 미션 상세">
+              <div class="list-item__icon">
+                <img class="mission-icon" src="imgs/mission-icon0.png" alt="" />
+                <!-- 미션 진행 중 일 때만 ON -->
+                <span class="icon-badge" aria-hidden="true">
+                  <img src="imgs/game1.svg" alt="" />
+                </span>
+              </div>
+
+                <div class="mission">
+                <!-- ✅ 텍스트+리워드 덩어리(폭 줄어드는 대상) -->
+                <div class="mission__body">
+                    <div class="mission__group">
+                    <!-- DEV: 뷰포트/컨테이너 너비 기준, 텍스트가 넘어가면 말줄임표 (1줄 ellipsis) -->
+                    <p class="mission__title">고블린 우드 : 숲속 방치 타이쿤 (멀티 고블린 우드 : 숲속 방치 타이쿤 (멀티</p>
+                    <p class="mission__desc">미션달성하고 리워드 받기</p>
+                    </div>
+
+                    <div class="reward">
+                    <span class="reward__label">최대</span>
+                    <span class="reward__value">2,562원</span>
+                    </div>
+                </div>
+
+                <!-- DEV: D-day 배지 노출 조건 (remainDays <= 3일 때만 렌더링) -->
+                <div class="mission__badge" aria-label="남은 기간 D-3" hidden>
+                    <span class="badge badge--dday">D-3</span>
+                </div>
+                </div>
+            </a>
+
+            <a class="list-item" href="mission-detail.html" data-id="2" aria-label="고블린 우드 미션 상세">
+              <div class="list-item__icon">
+                <img class="mission-icon" src="imgs/mission-icon1.png" alt="" />
+                <!-- 미션 진행 중 일 때만 ON -->
+                <!-- <span class="icon-badge" aria-hidden="true">
+                  <img src="imgs/game1.svg" alt="" />
+                </span> -->
+              </div>
+
+                <div class="mission">
+                <!-- ✅ 텍스트+리워드 덩어리(폭 줄어드는 대상) -->
+                <div class="mission__body">
+                    <div class="mission__group">
+                    <!-- DEV: 뷰포트/컨테이너 너비 기준, 텍스트가 넘어가면 말줄임표 (1줄 ellipsis) -->
+                    <p class="mission__title">[멀티액션] Bux Craze</p>
+                     <p class="mission__desc">미션달성하고 리워드 받기</p>
+                    </div>
+
+                    <div class="reward">
+                    <span class="reward__label">최대</span>
+                    <span class="reward__value">2,562원</span>
+                    </div>
+                </div>
+
+                <!-- DEV: D-day 배지 노출 조건 (remainDays <= 3일 때만 렌더링) -->
+                <div class="mission__badge" aria-label="남은 기간 D-3" hidden>
+                    <span class="badge badge--dday">D-3</span>
+                </div>
+                </div>
+            </a>
+            <a class="list-item" href="mission-detail.html" data-id="3" aria-label="고블린 우드 미션 상세">
+              <div class="list-item__icon">
+                <img class="mission-icon" src="imgs/mission-icon2.png" alt="" />
+                <!-- 미션 진행 중 일 때만 ON -->
+                <!-- <span class="icon-badge" aria-hidden="true">
+                  <img src="imgs/game1.svg" alt="" />
+                </span> -->
+              </div>
+
+                <div class="mission">
+                <!-- ✅ 텍스트+리워드 덩어리(폭 줄어드는 대상) -->
+                <div class="mission__body">
+                    <div class="mission__group">
+                    <!-- DEV: 뷰포트/컨테이너 너비 기준, 텍스트가 넘어가면 말줄임표 (1줄 ellipsis) -->
+                  <p class="mission__title">여명방주 : 엔드필드</p>
+                  <p class="mission__desc">미션달성하고 리워드 받기</p>
+                    </div>
+
+                    <div class="reward">
+                    <span class="reward__label">최대</span>
+                    <span class="reward__value">8,800원</span>
+                    </div>
+                </div>
+
+                <!-- DEV: D-day 배지 노출 조건 (remainDays <= 3일 때만 렌더링) -->
+                <div class="mission__badge" aria-label="남은 기간 D-3" hidden>
+                    <span class="badge badge--dday">D-3</span>
+                </div>
+                </div>
+            </a>
+            <a class="list-item" href="mission-detail.html" data-id="4" aria-label="고블린 우드 미션 상세">
+              <div class="list-item__icon">
+                <img class="mission-icon" src="imgs/mission-icon3.png" alt="" />
+                <!-- 미션 진행 중 일 때만 ON -->
+                <!-- <span class="icon-badge" aria-hidden="true">
+                  <img src="imgs/game1.svg" alt="" />
+                </span> -->
+              </div>
+
+                <div class="mission">
+                <!-- ✅ 텍스트+리워드 덩어리(폭 줄어드는 대상) -->
+                <div class="mission__body">
+                    <div class="mission__group">
+                    <!-- DEV: 뷰포트/컨테이너 너비 기준, 텍스트가 넘어가면 말줄임표 (1줄 ellipsis) -->
+                    <p class="mission__title">로얄 킹덤</p>
+                     <p class="mission__desc">미션달성하고 리워드 받기</p>
+                    </div>
+
+                    <div class="reward">
+                  <span class="reward__label">최대</span>
+                   <!-- DEV: 최대 리워드 금액 바인딩 -->
+                  <span class="reward__value">970원</span>
+                    </div>
+                </div>
+
+                <!-- DEV: D-day 배지 노출 조건 (remainDays <= 3일 때만 렌더링) -->
+                <div class="mission__badge" aria-label="남은 기간 D-3" hidden>
+                    <span class="badge badge--dday">D-3</span>
+                </div>
+                </div>
+            </a>
+
+            <a class="list-item" href="mission-detail.html" data-id="5" aria-label="고블린 우드 미션 상세">
+              <div class="list-item__icon">
+                <img class="mission-icon" src="imgs/mission-icon4.png" alt="" />
+                <!-- 미션 진행 중 일 때만 ON -->
+                <span class="icon-badge" aria-hidden="true">
+                  <img src="imgs/game1.svg" alt="" />
+                </span>
+              </div>
+
+                <div class="mission">
+                <!-- ✅ 텍스트+리워드 덩어리(폭 줄어드는 대상) -->
+                <div class="mission__body">
+                    <div class="mission__group">
+                    <!-- DEV: 뷰포트/컨테이너 너비 기준, 텍스트가 넘어가면 말줄임표 (1줄 ellipsis) -->
+                  <p class="mission__title">버거 플리즈</p>
+                  <p class="mission__desc">미션달성하고 리워드 받기</p>
+                    </div>
+
+                    <div class="reward">
+                  <span class="reward__label">최대</span>
+                   <!-- DEV: 최대 리워드 금액 바인딩 -->
+                  <span class="reward__value">3,152원</span>
+                    </div>
+                </div>
+
+                <!-- DEV: D-day 배지 노출 조건 (remainDays <= 3일 때만 렌더링) -->
+                <div class="mission__badge" aria-label="남은 기간 D-3" hidden>
+                    <span class="badge badge--dday">D-3</span>
+                </div>
+                </div>
+            </a>
+
+            <a class="list-item" href="mission-detail.html" data-id="6" aria-label="고블린 우드 미션 상세">
+              <div class="list-item__icon">
+                <img class="mission-icon" src="imgs/mission-icon5.png" alt="" />
+                <!-- 미션 진행 중 일 때만 ON -->
+                <span class="icon-badge" aria-hidden="true">
+                  <img src="imgs/game1.svg" alt="" />
+                </span>
+              </div>
+
+                <div class="mission">
+                <!-- ✅ 텍스트+리워드 덩어리(폭 줄어드는 대상) -->
+                <div class="mission__body">
+                    <div class="mission__group">
+                    <!-- DEV: 뷰포트/컨테이너 너비 기준, 텍스트가 넘어가면 말줄임표 (1줄 ellipsis) -->
+                  <p class="mission__title">[멀티액션] Bux Craze</p>
+                  <p class="mission__desc">미션달성하고 리워드 받기</p>
+                    </div>
+
+                    <div class="reward">
+                  <span class="reward__label">최대</span>
+                   <!-- DEV: 최대 리워드 금액 바인딩 -->
+                  <span class="reward__value">2,562원</span>
+                    </div>
+                </div>
+
+                <!-- DEV: D-day 배지 노출 조건 (remainDays <= 3일 때만 렌더링) -->
+                <div class="mission__badge" aria-label="남은 기간 D-3" >
+                    <span class="badge badge--dday">D-3</span>
+                </div>
+                </div>
+            </a>
+
+            <a class="list-item" href="mission-detail.html" data-id="6" aria-label="고블린 우드 미션 상세">
+              <div class="list-item__icon">
+                <img class="mission-icon" src="imgs/mission-icon5.png" alt="" />
+                <!-- 미션 진행 중 일 때만 ON -->
+                <span class="icon-badge" aria-hidden="true">
+                  <img src="imgs/game1.svg" alt="" />
+                </span>
+              </div>
+
+                <div class="mission">
+                <!-- ✅ 텍스트+리워드 덩어리(폭 줄어드는 대상) -->
+                <div class="mission__body">
+                    <div class="mission__group">
+                    <!-- DEV: 뷰포트/컨테이너 너비 기준, 텍스트가 넘어가면 말줄임표 (1줄 ellipsis) -->
+                  <p class="mission__title">[멀티액션] Bux Craze</p>
+                  <p class="mission__desc">미션달성하고 리워드 받기</p>
+                    </div>
+
+                    <div class="reward">
+                  <span class="reward__label">최대</span>
+                   <!-- DEV: 최대 리워드 금액 바인딩 -->
+                  <span class="reward__value">2,562원</span>
+                    </div>
+                </div>
+
+                <!-- DEV: D-day 배지 노출 조건 (remainDays <= 3일 때만 렌더링) -->
+                <div class="mission__badge" aria-label="남은 기간 D-3" >
+                    <span class="badge badge--dday">D-3</span>
+                </div>
+                </div>
+            </a>
+            <a class="list-item" href="mission-detail.html" data-id="6" aria-label="고블린 우드 미션 상세">
+              <div class="list-item__icon">
+                <img class="mission-icon" src="imgs/mission-icon5.png" alt="" />
+                <!-- 미션 진행 중 일 때만 ON -->
+                <!-- <span class="icon-badge" aria-hidden="true">
+                  <img src="imgs/game1.svg" alt="" />
+                </span> -->
+              </div>
+
+                <div class="mission">
+                <!-- ✅ 텍스트+리워드 덩어리(폭 줄어드는 대상) -->
+                <div class="mission__body">
+                    <div class="mission__group">
+                    <!-- DEV: 뷰포트/컨테이너 너비 기준, 텍스트가 넘어가면 말줄임표 (1줄 ellipsis) -->
+                  <p class="mission__title">[멀티액션] Bux Craze</p>
+                  <p class="mission__desc">미션달성하고 리워드 받기</p>
+                    </div>
+
+                    <div class="reward">
+                  <span class="reward__label">최대</span>
+                   <!-- DEV: 최대 리워드 금액 바인딩 -->
+                  <span class="reward__value">2,562원</span>
+                    </div>
+                </div>
+
+                <!-- DEV: D-day 배지 노출 조건 (remainDays <= 3일 때만 렌더링) -->
+                <!-- <div class="mission__badge" aria-label="남은 기간 D-3" >
+                    <span class="badge badge--dday">D-3</span>
+                </div> -->
+                </div>
+            </a>
+            <a class="list-item" href="mission-detail.html" data-id="6" aria-label="고블린 우드 미션 상세">
+              <div class="list-item__icon">
+                <img class="mission-icon" src="imgs/mission-icon5.png" alt="" />
+                <!-- 미션 진행 중 일 때만 ON -->
+                <!-- <span class="icon-badge" aria-hidden="true">
+                  <img src="imgs/game1.svg" alt="" />
+                </span> -->
+              </div>
+
+                <div class="mission">
+                <!-- ✅ 텍스트+리워드 덩어리(폭 줄어드는 대상) -->
+                <div class="mission__body">
+                    <div class="mission__group">
+                    <!-- DEV: 뷰포트/컨테이너 너비 기준, 텍스트가 넘어가면 말줄임표 (1줄 ellipsis) -->
+                  <p class="mission__title">[멀티액션] Bux Craze</p>
+                  <p class="mission__desc">미션달성하고 리워드 받기</p>
+                    </div>
+
+                    <div class="reward">
+                  <span class="reward__label">최대</span>
+                   <!-- DEV: 최대 리워드 금액 바인딩 -->
+                  <span class="reward__value">2,562원</span>
+                    </div>
+                </div>
+
+                <!-- DEV: D-day 배지 노출 조건 (remainDays <= 3일 때만 렌더링) -->
+                <!-- <div class="mission__badge" aria-label="남은 기간 D-3" >
+                    <span class="badge badge--dday">D-3</span>
+                </div> -->
+                </div>
+            </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </div>
+<!-- 리스트 없을때 화면 -->
+  <!-- <div class="empty-state" role="status" aria-live="polite">
+    <img class="empty-state__icon" src="imgs/no-list.svg" alt="" aria-hidden="true" />
+    <p class="empty-state__title">참여 가능한 게임이 없습니다.</p>
+    <p class="empty-state__desc">
+      지금은 참여할 수 있는 게임이 없어요.<br />
+      잠시 후 다시 확인해 주세요.
+    </p>
+    </div> -->
+
+        </section>
+      <!-- Footer -->
+      <footer class="footer-sign">
+        <div class="footer-sign__row">
+          <p class="footer-sign__brand">PINCRUX</p>
+          <p class="footer-sign__copy">Copyright PINCRUX. All rights reserved.</p>
+        </div>
+        <div class="footer-sign__links">
+          <a href="#" target="_blank" rel="noopener">이용문의</a>
+        </div>
+      </footer>
+
+        
+      </main>
+      
+<!-- ✅ fever 도움말 모달 -->
+<div class="fever-card__modal" id="feverHelpModal" role="dialog" aria-modal="true" aria-labelledby="feverHelpTitle"hidden>
+  <div class="fever-card__modal-dim" data-fever-modal-close></div>
+
+  <div class="fever-card__modal-dialog" role="document">
+    <div class="fever-card__modal-body">
+      <section class="fever-card__modal-section">
+        <h2 class="fever-card__modal-title" id="feverHelpTitle">
+          🔥 FEVER TIME 이란?
+        </h2>
+
+        <p class="fever-card__modal-desc">
+          <strong>FEVER TIME</strong>은 여러 활동을 통해 발동되는 보너스 미션입니다.
+          <strong>FEVER TIME</strong>이 발동된 상태로 미션을 완료하시면,<br />
+          획득한 적립금의 10%가 보너스로 쌓입니다.
+        </p>
+
+        <div class="fever-card__modal-note">
+          <p>
+            적립된 보너스 적립금은 피버 타임 종료 후 버튼을 눌러 바로 받을 수
+            있습니다. 단, 보너스를 수령하기 전까지는 다음 피버를 위한 게이지가
+            쌓이지 않으니 꼭 잊지 말고 받아 가세요!
+          </p>
+        </div>
+      </section>
+
+      <section class="fever-card__modal-section">
+        <h3 class="fever-card__modal-title">🎮 피버 타임 이용 가이드</h3>
+
+        <div class="fever-card__guide">
+          <div class="fever-card__guide-head">
+            <span class="fever-card__guide-check" aria-hidden="true">✔</span>
+            <p class="fever-card__guide-title">참여 방법</p>
+          </div>
+          <ul class="fever-card__guide-list">
+            <li>게이지 100% 충전 시 <strong>FEVER TIME</strong> 발동</li>
+            <li><strong>FEVER TIME</strong>은 5시간 동안 유지</li>
+            <li>출석, 미션달성, 광고 참여 등으로 게이지 수집</li>
+          </ul>
+        </div>
+
+        <div class="fever-card__guide">
+          <div class="fever-card__guide-head">
+            <span class="fever-card__guide-check" aria-hidden="true">✔</span>
+            <p class="fever-card__guide-title">피버 혜택</p>
+          </div>
+          <ul class="fever-card__guide-list">
+            <li>발동 중 완료한 모든 미션 리워드의 10% 추가 적립</li>
+            <li>단, 쌓인 보너스는 매일 ‘정오’에 초기화</li>
+          </ul>
+        </div>
+
+        <div class="fever-card__guide">
+          <div class="fever-card__guide-head">
+            <span class="fever-card__guide-check" aria-hidden="true">✔</span>
+            <p class="fever-card__guide-title">보너스 수령</p>
+          </div>
+          <ul class="fever-card__guide-list">
+            <li><strong>FEVER TIME</strong> 종료 후 ‘받기’ 클릭</li>
+            <li>→ 광고 1회 시청 후 지급</li>
+          </ul>
+        </div>
+
+        <div class="fever-card__guide">
+          <div class="fever-card__guide-head">
+            <span class="fever-card__guide-check" aria-hidden="true">✔</span>
+            <p class="fever-card__guide-title">주의 사항</p>
+          </div>
+          <ul class="fever-card__guide-list">
+            <li>보너스를 받아야 다시 게이지를 쌓을 수 있습니다.</li>
+            <li class="is-highlight">
+              매일 ‘정오’에 피버 게이지 및 보너스가 모두 초기화 됩니다.
+            </li>
+            <li>피버가 발동되면 초기화되지 않고 약속된 5시간 동안 지속됩니다.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <button type="button" class="fever-card__modal-confirm"data-fever-modal-close>확인</button>
+  </div>
+</div>
+<!-- ✅ fever 종료 안내 모달 -->
+<div class="fever-card__modal fever-card__modal--expired" id="feverExpiredModal" role="dialog" aria-modal="true" aria-labelledby="feverExpiredTitle" hidden>
+  <div class="fever-card__modal-dim" data-fever-expired-close></div>
+
+  <div class="fever-card__modal-dialog fever-card__modal-dialog--expired" role="document">
+    <div class="fever-card__modal-body">
+      <section class="fever-card__modal-section fever-card__modal-section--expired">
+        <h2 class="fever-card__expired-title" id="feverExpiredTitle">
+          아쉽게도 지급 가능 시간이 지났어요.
+        </h2>
+
+        <p class="fever-card__expired-desc">
+          <span class="fever-card__expired-accent">
+            아쉽게도 보너스 수령 시간이 지났습니다.
+            (매일 13시 마감)
+          </span><br />
+          <span class="fever-card__expired-text">
+            이미 초기화가 진행되어 새로운 피버 게이지를 쌓을 수 있습니다.<br />
+            지금 바로 미션에 참여해 보세요.
+          </span>
+        </p>
+      </section>
+    </div>
+
+    <button type="button" class="fever-card__modal-confirm fever-card__modal-confirm--retry" data-fever-expired-close> 다시 도전하기 </button>
+  </div>
+</div>
+
+    </div>
+      <!-- Footer -->
+      <!-- <footer class="footer-sign">
+        <div class="footer-sign__row">
+          <p class="footer-sign__brand">PINCRUX</p>
+          <p class="footer-sign__copy">Copyright PINCRUX. All rights reserved.</p>
+        </div>
+        <div class="footer-sign__links">
+          <a href="#" target="_blank" rel="noopener">이용문의</a>
+        </div>
+      </footer> -->
+  </div>
+
+
+
+
+
+<!-- 검색창 화면 -->
+<div class="search-sheet" id="searchSheet" aria-hidden="true">
+  <div class="search-sheet__inner" role="dialog" aria-modal="true" aria-label="검색">
+    <div class="search-sheet__top">
+      <div class="search-field">
+        <img class="search-field__icon" src="imgs/search.svg" alt="" aria-hidden="true">
+        <input class="search-field__input" type="search" placeholder="게임을 검색해보세요" />
+      </div>
+      <!-- 검색창 닫기 -->
+      <button type="button" class="search-sheet__close" id="searchClose">닫기</button>
+    </div>
+
+    <div class="search-sheet__section">
+      <div class="search-sheet__head">
+        <p class="search-sheet__title">최근 검색</p>
+        <!-- 검색 삭제 -->
+        <button type="button" class="search-sheet__clear">전체 삭제</button>
+      </div>
+
+      <ul class="search-sheet__list">
+       <li class="search-chip">
+        <span class="search-chip__txt">고블린</span>
+        <!-- 해당 검색어만 삭제 -->
+          <button type="button" class="search-chip__del" aria-label="삭제">
+          <img src="imgs/delete.svg" alt="" aria-hidden="true">
+        </button>
+       </li>
+       <li class="search-chip">
+        <span class="search-chip__txt">고블린</span>
+        <!-- 해당 검색어만 삭제 -->
+          <button type="button" class="search-chip__del" aria-label="삭제">
+          <img src="imgs/delete.svg" alt="" aria-hidden="true">
+        </button>
+       </li>
+       <li class="search-chip">
+        <span class="search-chip__txt">고블린</span>
+        <!-- 해당 검색어만 삭제 -->
+          <button type="button" class="search-chip__del" aria-label="삭제">
+          <img src="imgs/delete.svg" alt="" aria-hidden="true">
+        </button>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- DEV:
+  - 출석/미션 완료 등 특정 액션 후 상단 플로팅 토스트 노출
+  - 일정 시간 후 자동 숨김 처리
+-->
+<div class="floating-toast is-hidden" id="floatingToast" aria-live="polite">
+  <p class="floating-toast__text">
+    <span class="floating-toast__emoji">🔥</span>
+    <span class="floating-toast__body">오늘 출석으로 피버 게이지</span>
+    <span class="floating-toast__accent">10%UP</span>
+    <span class="floating-toast__mark">!</span>
+  </p>
+</div>
+
+
+<script src="js/confetti.browser.min.js"></script>
+<script>
+  (function () {
+    const content = document.getElementById('content');
+    const progress = document.getElementById('progress');
+    const itembox = document.getElementById('itembox');
+
+    if (!content || !progress || !itembox) return;
+
+    function updateCompact() {
+      const contentTop = content.getBoundingClientRect().top;
+      const itemboxTop = itembox.getBoundingClientRect().top;
+      const shouldCompact = itemboxTop <= contentTop + 0.5;
+
+      progress.classList.toggle('is-sticky', shouldCompact);
+      progress.classList.toggle('is-compact', shouldCompact);
+    }
+
+    content.addEventListener('scroll', updateCompact, { passive: true });
+    updateCompact();
+  })();
+
+  (function () {
+    const openBtn = document.querySelector('.nav__search');
+    const sheet = document.getElementById('searchSheet');
+    const closeBtn = document.getElementById('searchClose');
+
+    if (!openBtn || !sheet || !closeBtn) return;
+
+    function openSheet() {
+      sheet.classList.add('is-open');
+      sheet.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeSheet() {
+      sheet.classList.remove('is-open');
+      sheet.setAttribute('aria-hidden', 'true');
+    }
+
+    openBtn.addEventListener('click', openSheet);
+    closeBtn.addEventListener('click', closeSheet);
+
+    sheet.addEventListener('click', (e) => {
+      if (e.target === sheet) closeSheet();
+    });
+  })();
+
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.search-chip__del');
+    if (!btn) return;
+
+    const li = btn.closest('.search-chip');
+    if (li) li.remove();
+  });
+
+  (function () {
+    const tabBtns = document.querySelectorAll('.tab__item[data-tab]');
+    const listItems = document.querySelectorAll('.list-box .list-item');
+
+    if (!tabBtns.length || !listItems.length) return;
+
+    function setActive(tab) {
+      tabBtns.forEach((btn) => {
+        const isActive = btn.dataset.tab === tab;
+        btn.classList.toggle('is-active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      listItems.forEach((item) => {
+        const isLevelMission = item.dataset.type === 'level';
+        const isMultiMission = item.dataset.type === 'multi';
+
+        let shouldHide = false;
+
+        if (tab === 'level') {
+          shouldHide = !isLevelMission;
+        } else if (tab === 'multi') {
+          shouldHide = !isMultiMission;
+        } else {
+          shouldHide = false;
+        }
+
+        item.style.display = shouldHide ? 'none' : '';
+      });
+    }
+
+    tabBtns.forEach((btn) => {
+      btn.addEventListener('click', () => setActive(btn.dataset.tab));
+    });
+
+    const initial = document.querySelector('.tab__item.is-active')?.dataset.tab || 'all';
+    setActive(initial);
+  })();
+
+  (function () {
+    const progress = document.getElementById('progress');
+    const levelBtn = document.querySelector('.tab__item[data-tab="level"]');
+
+    if (!progress || !levelBtn) return;
+
+    function goLevel() {
+      levelBtn.click();
+    }
+
+    progress.addEventListener('click', goLevel);
+
+    progress.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        goLevel();
+      }
+    });
+  })();
+
+  // 피버 상태 전체
+  (function () {
+    const feverDefault = document.getElementById('feverDefault');
+    const feverOn = document.getElementById('feverOn');
+    const feverWarning = document.getElementById('feverWarning');
+    const feverEnded = document.getElementById('feverEnded');
+    const feverWaiting = document.getElementById('feverWaiting');
+
+    const timeText = document.getElementById('feverTimeText');
+    const onTimeText = document.getElementById('feverOnTimeText');
+    const warningTimeText = document.getElementById('feverWarningTimeText');
+
+    const percentText = document.getElementById('feverPercentText');
+    const bonusText = document.getElementById('feverBonusText');
+    const warningBonusText = document.getElementById('feverWarningBonusText');
+
+    const endedRewardText = document.getElementById('feverEndedRewardText');
+    const endedTimeText = document.getElementById('feverEndedTimeText');
+    const endedCtaBtn = document.getElementById('feverEndedCtaBtn');
+
+    const waitingTimeText = document.getElementById('feverWaitingTimeText');
+
+    const gaugeWrap = document.querySelector('.fever-card__gauge');
+    const gaugeFill = document.getElementById('feverGaugeFill');
+    const gaugeThumb = document.querySelector('.fever-card__gauge-thumb');
+    const loadingIcon = document.querySelector('.fever-card__loading');
+    const ctaBtn = document.getElementById('feverCtaBtn');
+
+    if (
+      !feverDefault ||
+      !feverOn ||
+      !feverWarning ||
+      !feverEnded ||
+      !feverWaiting ||
+      !timeText ||
+      !percentText ||
+      !gaugeWrap ||
+      !gaugeFill ||
+      !ctaBtn
+    ) return;
+
+    const GAUGE_FILL_DURATION = 480;
+    const BURST_DURATION = 500;
+    const SWITCH_DELAY = GAUGE_FILL_DURATION + BURST_DURATION;
+
+    // '' | 'default' | 'on' | 'warning' | 'ended' | 'waiting'
+    const FORCE_FEVER_VIEW = '';
+
+    let feverPercent = 0;
+    let remainingSeconds = 4 * 60 * 60;
+    let feverStarted = false;
+    let endedClaimSeconds = 11 * 60 + 11;
+    let waitingSeconds = 1 * 60 * 60 + 15 * 60 + 35;
+
+    function triggerFeverFirework() {
+      if (typeof confetti !== 'function') return;
+
+      const colors = ['#7B4DFF', '#FF5B79', '#FFD700', '#FFFFFF'];
+
+      confetti({
+        particleCount: 90,
+        spread: 70,
+        startVelocity: 38,
+        scalar: 0.9,
+        origin: { x: 0.5, y: 0.3 },
+        colors,
+        zIndex: 10000
+      });
+
+      setTimeout(() => {
+        confetti({
+          particleCount: 70,
+          spread: 60,
+          startVelocity: 32,
+          scalar: 0.85,
+          origin: { x: 0.5, y: 0.3 },
+          colors,
+          zIndex: 10000
+        });
+      }, 120);
+
+      setTimeout(() => {
+        confetti({
+          particleCount: 70,
+          spread: 60,
+          startVelocity: 32,
+          scalar: 0.85,
+          origin: { x: 0.5, y: 0.3 },
+          colors,
+          zIndex: 10000
+        });
+      }, 180);
+    }
+
+    function formatClockTime(totalSeconds) {
+      const safe = Math.max(0, totalSeconds);
+      const hours = Math.floor(safe / 3600);
+      const minutes = Math.floor((safe % 3600) / 60);
+      const seconds = safe % 60;
+
+      return [
+        String(hours),
+        String(minutes).padStart(2, '0'),
+        String(seconds).padStart(2, '0')
+      ].join(':');
+    }
+
+    function formatShortTime(totalSeconds) {
+      const safe = Math.max(0, totalSeconds);
+      const minutes = Math.floor(safe / 60);
+      const seconds = safe % 60;
+
+      return [
+        String(minutes).padStart(2, '0'),
+        String(seconds).padStart(2, '0')
+      ].join(':');
+    }
+
+    function formatNumber(value) {
+      return Number(value).toLocaleString('ko-KR');
+    }
+
+    function getGradientByPercent(percent) {
+      const purpleMid = Math.max(22, 34 - percent * 0.06);
+      const pinkMid = Math.max(48, 62 - percent * 0.04);
+      const magentaStart = Math.max(72, 84 - percent * 0.05);
+
+      return `linear-gradient(
+        90deg,
+        #5a48bf 0%,
+        #6a49c2 ${purpleMid}%,
+        #7d43bf ${pinkMid}%,
+        #9a2bb4 ${magentaStart}%,
+        #c5019a 100%
+      )`;
+    }
+
+    function getBonusAmount(percent) {
+      const baseBonus = 5800;
+      return percent >= 100 ? baseBonus : Math.floor(baseBonus * (percent / 100));
+    }
+
+    function getEndedRewardAmount() {
+      return 5848;
+    }
+
+    function resetToDefaultCycle() {
+      feverPercent = 0;
+      feverStarted = false;
+      remainingSeconds = 4 * 60 * 60;
+      endedClaimSeconds = 11 * 60 + 11;
+      waitingSeconds = 1 * 60 * 60 + 15 * 60 + 35;
+    }
+
+    function hideAllStates() {
+      feverDefault.classList.add('is-hidden');
+      feverOn.classList.add('is-hidden');
+      feverWarning.classList.add('is-hidden');
+      feverEnded.classList.add('is-hidden');
+      feverWaiting.classList.add('is-hidden');
+    }
+
+    function showDefaultState() {
+      hideAllStates();
+      feverDefault.classList.remove('is-hidden');
+    }
+
+    function showOnState(playFx = false) {
+      hideAllStates();
+      feverOn.classList.remove('is-hidden');
+
+      if (playFx) {
+        triggerFeverFirework();
+      }
+    }
+
+    function showWarningState() {
+      hideAllStates();
+      feverWarning.classList.remove('is-hidden');
+    }
+
+    function showEndedState() {
+      hideAllStates();
+      feverEnded.classList.remove('is-hidden');
+    }
+
+    function showWaitingState() {
+      hideAllStates();
+      feverWaiting.classList.remove('is-hidden');
+    }
+
+    function playGaugeCompleteBurst() {
+      if (!gaugeThumb) return;
+
+      gaugeThumb.classList.remove('is-burst');
+      void gaugeThumb.offsetWidth;
+      gaugeThumb.classList.add('is-burst');
+
+      setTimeout(() => {
+        gaugeThumb.classList.remove('is-burst');
+      }, BURST_DURATION);
+    }
+
+    function renderGauge() {
+      percentText.textContent = feverPercent;
+      gaugeWrap.setAttribute('aria-valuenow', feverPercent);
+
+      const isEmpty = feverPercent <= 0;
+      const isLow = feverPercent > 0 && feverPercent < 18;
+
+      if (isEmpty) {
+        gaugeFill.style.width = '0%';
+        gaugeFill.classList.add('is-empty');
+      } else {
+        gaugeFill.style.width = feverPercent + '%';
+        gaugeFill.style.background = getGradientByPercent(feverPercent);
+        gaugeFill.classList.remove('is-empty');
+      }
+
+      gaugeFill.classList.toggle('is-low', isLow);
+
+      if (loadingIcon) {
+        loadingIcon.style.display = feverPercent >= 100 ? 'none' : '';
+      }
+    }
+
+    function renderTexts() {
+      const fullTimeText = formatClockTime(remainingSeconds);
+      const warningTime = formatShortTime(remainingSeconds);
+      const bonusAmountText = `${formatNumber(getBonusAmount(feverPercent))}원`;
+
+      timeText.textContent = fullTimeText;
+
+      if (onTimeText) onTimeText.textContent = fullTimeText;
+      if (warningTimeText) warningTimeText.textContent = warningTime;
+      if (bonusText) bonusText.textContent = bonusAmountText;
+      if (warningBonusText) warningBonusText.textContent = bonusAmountText;
+      if (endedRewardText) endedRewardText.textContent = `광고 보고 ${formatNumber(getEndedRewardAmount())}원 받기`;
+      if (endedTimeText) endedTimeText.textContent = formatShortTime(endedClaimSeconds);
+      if (waitingTimeText) waitingTimeText.textContent = formatClockTime(waitingSeconds);
+    }
+
+    function renderState() {
+      if (remainingSeconds > 0 && !feverStarted) {
+        showDefaultState();
+        return;
+      }
+
+      if (feverStarted && remainingSeconds > 30 * 60) {
+        showOnState(false);
+        return;
+      }
+
+      if (feverStarted && remainingSeconds > 0 && remainingSeconds <= 30 * 60) {
+        showWarningState();
+        return;
+      }
+
+      if (feverStarted && remainingSeconds <= 0 && endedClaimSeconds > 0) {
+        showEndedState();
+        return;
+      }
+
+      if (feverStarted && remainingSeconds <= 0 && endedClaimSeconds <= 0 && waitingSeconds > 0) {
+        showWaitingState();
+        return;
+      }
+
+      if (feverStarted && remainingSeconds <= 0 && endedClaimSeconds <= 0 && waitingSeconds <= 0) {
+        resetToDefaultCycle();
+        showDefaultState();
+        return;
+      }
+
+      showDefaultState();
+    }
+
+    function renderFever() {
+      renderGauge();
+      renderTexts();
+      renderState();
+    }
+
+function startCountdown() {
+  setInterval(() => {
+    if (remainingSeconds > 0) {
+      remainingSeconds -= 1;
+    } else if (feverStarted && endedClaimSeconds > 0) {
+      endedClaimSeconds -= 1;
+    } else if (feverStarted && endedClaimSeconds <= 0 && waitingSeconds > 0) {
+      waitingSeconds -= 1;
+    } else if (feverStarted && endedClaimSeconds <= 0 && waitingSeconds <= 0) {
+      resetToDefaultCycle();
+    }
+
+    renderFever();
+  }, 1000);
+}
+
+    function applyForcedView() {
+      if (FORCE_FEVER_VIEW === 'default') {
+        resetToDefaultCycle();
+        renderFever();
+        return true;
+      }
+
+      if (FORCE_FEVER_VIEW === 'on') {
+        feverStarted = true;
+        feverPercent = 100;
+        remainingSeconds = 4 * 60 * 60 - 1;
+        endedClaimSeconds = 11 * 60 + 11;
+        waitingSeconds = 1 * 60 * 60 + 15 * 60 + 35;
+        renderFever();
+        triggerFeverFirework();
+        return true;
+      }
+
+      if (FORCE_FEVER_VIEW === 'warning') {
+        feverStarted = true;
+        feverPercent = 100;
+        remainingSeconds = 29 * 60 + 59;
+        endedClaimSeconds = 11 * 60 + 11;
+        waitingSeconds = 1 * 60 * 60 + 15 * 60 + 35;
+        renderFever();
+        return true;
+      }
+
+      if (FORCE_FEVER_VIEW === 'ended') {
+        feverStarted = true;
+        feverPercent = 100;
+        remainingSeconds = 0;
+        endedClaimSeconds = 11 * 60 + 11;
+        waitingSeconds = 1 * 60 * 60 + 15 * 60 + 35;
+        renderFever();
+        return true;
+      }
+
+      if (FORCE_FEVER_VIEW === 'waiting') {
+        feverStarted = true;
+        feverPercent = 100;
+        remainingSeconds = 0;
+        endedClaimSeconds = 0;
+        waitingSeconds = 1 * 60 * 60 + 15 * 60 + 35;
+        renderFever();
+        return true;
+      }
+
+      return false;
+    }
+
+    ctaBtn.addEventListener('click', () => {
+      if (feverStarted) return;
+
+      const prevPercent = feverPercent;
+      feverPercent = Math.min(feverPercent + 10, 100);
+      renderFever();
+
+      if (prevPercent < 100 && feverPercent === 100) {
+        setTimeout(() => {
+          playGaugeCompleteBurst();
+        }, GAUGE_FILL_DURATION);
+
+        setTimeout(() => {
+          feverStarted = true;
+          showOnState(true);
+          renderFever();
+        }, SWITCH_DELAY);
+      }
+    });
+
+    if (endedCtaBtn) {
+      endedCtaBtn.addEventListener('click', () => {
+        console.log('피버 종료 후 보너스 수령 CTA 클릭');
+      });
+    }
+
+    const isForced = applyForcedView();
+
+    if (!isForced) {
+      resetToDefaultCycle();
+      renderFever();
+    }
+
+    startCountdown();
+
+    document.addEventListener('click', () => {
+      if (FORCE_FEVER_VIEW === 'on') {
+        triggerFeverFirework();
+      }
+    });
+  })();
+
+  (function () {
+    const floatingToast = document.getElementById('floatingToast');
+    let floatingToastTimer = null;
+
+    if (!floatingToast) return;
+
+    function showFloatingToast(duration = 3000) {
+      clearTimeout(floatingToastTimer);
+
+      floatingToast.classList.remove('is-hidden', 'is-hide');
+      void floatingToast.offsetWidth;
+      floatingToast.classList.add('is-show');
+
+      floatingToastTimer = setTimeout(() => {
+        floatingToast.classList.remove('is-show');
+        floatingToast.classList.add('is-hide');
+
+        setTimeout(() => {
+          floatingToast.classList.remove('is-hide');
+          floatingToast.classList.add('is-hidden');
+        }, 400);
+      }, duration);
+    }
+
+    // 필요 시 다른 JS에서 호출해서 사용
+    window.showFloatingToast = showFloatingToast;
+
+
+    showFloatingToast(); // 테스트용
+
+  })();
+
+
+(function () {
+    const normalButtons = document.querySelectorAll('.fever-card__help:not(.fever-card__help--expired)');
+    const expiredButtons = document.querySelectorAll('.fever-card__help--expired');
+
+    const helpModal = document.getElementById('feverHelpModal');
+    const expiredModal = document.getElementById('feverExpiredModal');
+
+    let lastFocusedElement = null;
+
+    function openModal(modal, button) {
+      if (!modal) return;
+      lastFocusedElement = button;
+      modal.hidden = false;
+      button.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeModal(modal) {
+      if (!modal) return;
+      modal.hidden = true;
+
+      document.querySelectorAll('.fever-card__help').forEach((btn) => {
+        btn.setAttribute('aria-expanded', 'false');
+      });
+
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+      }
+    }
+
+    normalButtons.forEach((button) => {
+      button.addEventListener('click', () => openModal(helpModal, button));
+    });
+
+    expiredButtons.forEach((button) => {
+      button.addEventListener('click', () => openModal(expiredModal, button));
+    });
+
+    helpModal?.querySelectorAll('[data-fever-modal-close]').forEach((button) => {
+      button.addEventListener('click', () => closeModal(helpModal));
+    });
+
+    expiredModal?.querySelectorAll('[data-fever-expired-close]').forEach((button) => {
+      button.addEventListener('click', () => closeModal(expiredModal));
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      if (helpModal && !helpModal.hidden) closeModal(helpModal);
+      if (expiredModal && !expiredModal.hidden) closeModal(expiredModal);
+    });
+  })();
+
+
+</script>
+
+
+
+ 
+</body>
+</html>
