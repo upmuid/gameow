@@ -175,13 +175,15 @@
     </div>
 
     <p class="fever-card__desc">
-      매일 5시간 동안 10% 추가적립을 받을 수 있어요
+      피버는 매일 12시(정오)에 초기화돼요.
     </p>
   </div>
 
 
   <div class="fever-card__timer-box" aria-label="다음 피버타임까지 남은 시간">
+    <p class="fever-card__timer-box-label">🕒 다음 피버타임까지 남은 시간</p>
     <p class="fever-card__timer-box-text" id="feverWaitingTimeText">01:15:35</p>
+  
   </div>
 </div>
 
@@ -197,9 +199,39 @@
 
 
 
+
+
+        <!-- Item box -->
+        <section class="itembox" id="itembox" aria-label="미션 목록">
+          <!-- Tabs -->
+<!-- Tabs -->
+<div class="tab-menu">
+  <div class="tab" role="tablist" aria-label="미션 필터">
+    <button type="button" class="tab__item is-active" data-tab="all" role="tab" aria-selected="true">
+      <span class="tab__txt">전체</span>
+    </button>
+
+    <button type="button" class="tab__item" data-tab="level" role="tab" aria-selected="false">
+        <span class="tab__txt">레벨달성</span>
+
+
+    </button>
+
+    <button type="button" class="tab__item" data-tab="multi" role="tab" aria-selected="false">
+        <span class="tab__txt">멀티미션</span>
+
+
+    </button>
+
+    <button type="button" class="tab__item" data-tab="joining" role="tab" aria-selected="false">
+        <span class="tab__txt">참여중</span>
+        <span class="tab__count">123</span>
+    </button>
+  </div>
+</div>
         <!-- Progress (스크롤 시 축소/우측 sticky) -->
          <!-- DEV: 진행중 미션 개수 바인딩 -->
-        <!-- <section class="progress" id="progress" aria-label="진행 중인 미션" role="button" tabindex="0">
+        <!-- <section class="progress is-sticky is-compact" id="progress" aria-label="진행 중인 미션" role="button" tabindex="0">
           <div class="progress__inner">
             <div class="progress__icon" aria-hidden="true">
               <img src="imgs/game0.svg" alt="" />
@@ -210,40 +242,6 @@
             
           </div>
         </section> -->
-
-        <!-- 진행 중 미션창일때 보이는 배너 화면 -->
-        <!-- <section class="progress" id="progressNew" aria-label="새미션">
-          <div class="progress__inner">
-            <div class="progress__icon" aria-hidden="true">
-              <img class="progress__badge" src="imgs/new_bage.svg" alt="new" />
-            </div>
-
-            <p class="progress__label">새로운 미션 완료하고 리워드 받기</p>
-          </div>
-        </section> -->
-
-        <!-- Item box -->
-        <section class="itembox" id="itembox" aria-label="미션 목록">
-          <!-- Tabs -->
-          <div class="tab-menu">
-            <div class="tab" role="tablist" aria-label="미션 필터">
-              <button type="button" class="tab__item is-active" data-tab="all" role="tab" aria-selected="true">
-                  <!-- DEV:
-                        - 'N' 배지는 '새 미션 존재 여부'에 따라 노출/비노출
-                        - 새 미션이 1개 이상이면 노출 (hasNewMission === true)
-                        - 새 미션이 없으면 렌더링하지 않거나 hidden 처리 -->
-                <img class="tab__badge" src="imgs/bage.svg" alt="" aria-hidden="true" />
-                <span class="tab__txt">전체</span>
-              </button>
-
-<button type="button" class="tab__item" data-tab="level" role="tab" aria-selected="false">
-  <span class="tab__txt">레벨 달성</span>
-</button>
-<button type="button" class="tab__item" data-tab="multi" role="tab" aria-selected="false">
-  <span class="tab__txt">멀티 미션</span>
-</button>
-            </div>
-          </div>
 
           <!-- List -->
           <div class="list-box" id="listBox">
@@ -311,7 +309,7 @@
                 </div>
             </a>
 
-            <a class="list-item" href="mission-detail.html" data-id="2" aria-label="고블린 우드 미션 상세">
+            <a class="list-item" href="mission-detail.html" data-id="2" data-type="multi" aria-label="고블린 우드 미션 상세">
               <div class="list-item__icon">
                 <img class="mission-icon" src="imgs/mission-icon1.png" alt="" />
                 <!-- 미션 진행 중 일 때만 ON -->
@@ -341,7 +339,7 @@
                 </div>
                 </div>
             </a>
-            <a class="list-item" href="mission-detail.html" data-id="3" aria-label="고블린 우드 미션 상세">
+            <a class="list-item" href="mission-detail.html" data-id="3" data-type="multi" aria-label="고블린 우드 미션 상세">
               <div class="list-item__icon">
                 <img class="mission-icon" src="imgs/mission-icon2.png" alt="" />
                 <!-- 미션 진행 중 일 때만 ON -->
@@ -371,7 +369,7 @@
                 </div>
                 </div>
             </a>
-            <a class="list-item" href="mission-detail.html" data-id="4" aria-label="고블린 우드 미션 상세">
+            <a class="list-item" href="mission-detail.html" data-id="4" data-type="multi" aria-label="고블린 우드 미션 상세">
               <div class="list-item__icon">
                 <img class="mission-icon" src="imgs/mission-icon3.png" alt="" />
                 <!-- 미션 진행 중 일 때만 ON -->
@@ -403,7 +401,7 @@
                 </div>
             </a>
 
-            <a class="list-item" href="mission-detail.html" data-id="5" aria-label="고블린 우드 미션 상세">
+            <a class="list-item" href="mission-detail.html" data-id="5" data-type="multi" aria-label="고블린 우드 미션 상세">
               <div class="list-item__icon">
                 <img class="mission-icon" src="imgs/mission-icon4.png" alt="" />
                 <!-- 미션 진행 중 일 때만 ON -->
@@ -435,7 +433,7 @@
                 </div>
             </a>
 
-            <a class="list-item" href="mission-detail.html" data-id="6" aria-label="고블린 우드 미션 상세">
+            <a class="list-item" href="mission-detail.html" data-id="6" data-type="multi" aria-label="고블린 우드 미션 상세">
               <div class="list-item__icon">
                 <img class="mission-icon" src="imgs/mission-icon5.png" alt="" />
                 <!-- 미션 진행 중 일 때만 ON -->
@@ -467,7 +465,7 @@
                 </div>
             </a>
 
-            <a class="list-item" href="mission-detail.html" data-id="6" aria-label="고블린 우드 미션 상세">
+            <a class="list-item" href="mission-detail.html" data-id="6" data-type="multi" aria-label="고블린 우드 미션 상세">
               <div class="list-item__icon">
                 <img class="mission-icon" src="imgs/mission-icon5.png" alt="" />
                 <!-- 미션 진행 중 일 때만 ON -->
@@ -498,7 +496,7 @@
                 </div>
                 </div>
             </a>
-            <a class="list-item" href="mission-detail.html" data-id="6" aria-label="고블린 우드 미션 상세">
+            <a class="list-item" href="mission-detail.html" data-id="6" data-type="multi" aria-label="고블린 우드 미션 상세">
               <div class="list-item__icon">
                 <img class="mission-icon" src="imgs/mission-icon5.png" alt="" />
                 <!-- 미션 진행 중 일 때만 ON -->
@@ -529,7 +527,7 @@
                 </div> -->
                 </div>
             </a>
-            <a class="list-item" href="mission-detail.html" data-id="6" aria-label="고블린 우드 미션 상세">
+            <a class="list-item" href="mission-detail.html" data-id="6" data-type="multi" aria-label="고블린 우드 미션 상세">
               <div class="list-item__icon">
                 <img class="mission-icon" src="imgs/mission-icon5.png" alt="" />
                 <!-- 미션 진행 중 일 때만 ON -->
@@ -790,25 +788,20 @@
 
 <script src="js/confetti.browser.min.js"></script>
 <script>
-  (function () {
-    const content = document.getElementById('content');
-    const progress = document.getElementById('progress');
-    const itembox = document.getElementById('itembox');
+(function () {
+  const content = document.getElementById('content');
+  const progress = document.getElementById('progress');
 
-    if (!content || !progress || !itembox) return;
+  if (!content || !progress) return;
 
-    function updateCompact() {
-      const contentTop = content.getBoundingClientRect().top;
-      const itemboxTop = itembox.getBoundingClientRect().top;
-      const shouldCompact = itemboxTop <= contentTop + 0.5;
+  function updateCompact() {
+    progress.classList.add('is-sticky');
+    progress.classList.add('is-compact');
+  }
 
-      progress.classList.toggle('is-sticky', shouldCompact);
-      progress.classList.toggle('is-compact', shouldCompact);
-    }
-
-    content.addEventListener('scroll', updateCompact, { passive: true });
-    updateCompact();
-  })();
+  content.addEventListener('scroll', updateCompact, { passive: true });
+  updateCompact();
+})();
 
   (function () {
     const openBtn = document.querySelector('.nav__search');
@@ -846,8 +839,14 @@
   (function () {
     const tabBtns = document.querySelectorAll('.tab__item[data-tab]');
     const listItems = document.querySelectorAll('.list-box .list-item');
+    const joiningCount = document.querySelector('.tab__count');
 
     if (!tabBtns.length || !listItems.length) return;
+
+    function updateJoiningCount() {
+      const count = Array.from(listItems).filter((item) => item.querySelector('.icon-badge')).length;
+      if (joiningCount) joiningCount.textContent = count;
+    }
 
     function setActive(tab) {
       tabBtns.forEach((btn) => {
@@ -859,6 +858,7 @@
       listItems.forEach((item) => {
         const isLevelMission = item.dataset.type === 'level';
         const isMultiMission = item.dataset.type === 'multi';
+        const isJoiningMission = !!item.querySelector('.icon-badge');
 
         let shouldHide = false;
 
@@ -866,6 +866,8 @@
           shouldHide = !isLevelMission;
         } else if (tab === 'multi') {
           shouldHide = !isMultiMission;
+        } else if (tab === 'joining') {
+          shouldHide = !isJoiningMission;
         } else {
           shouldHide = false;
         }
@@ -877,6 +879,8 @@
     tabBtns.forEach((btn) => {
       btn.addEventListener('click', () => setActive(btn.dataset.tab));
     });
+
+    updateJoiningCount();
 
     const initial = document.querySelector('.tab__item.is-active')?.dataset.tab || 'all';
     setActive(initial);
@@ -948,7 +952,7 @@
     const SWITCH_DELAY = GAUGE_FILL_DURATION + BURST_DURATION;
 
     // '' | 'default' | 'on' | 'warning' | 'ended' | 'waiting'
-    const FORCE_FEVER_VIEW = '';
+    const FORCE_FEVER_VIEW = 'waiting';
 
     let feverPercent = 0;
     let remainingSeconds = 4 * 60 * 60;
@@ -1185,21 +1189,21 @@
       renderState();
     }
 
-function startCountdown() {
-  setInterval(() => {
-    if (remainingSeconds > 0) {
-      remainingSeconds -= 1;
-    } else if (feverStarted && endedClaimSeconds > 0) {
-      endedClaimSeconds -= 1;
-    } else if (feverStarted && endedClaimSeconds <= 0 && waitingSeconds > 0) {
-      waitingSeconds -= 1;
-    } else if (feverStarted && endedClaimSeconds <= 0 && waitingSeconds <= 0) {
-      resetToDefaultCycle();
-    }
+    function startCountdown() {
+      setInterval(() => {
+        if (remainingSeconds > 0) {
+          remainingSeconds -= 1;
+        } else if (feverStarted && endedClaimSeconds > 0) {
+          endedClaimSeconds -= 1;
+        } else if (feverStarted && endedClaimSeconds <= 0 && waitingSeconds > 0) {
+          waitingSeconds -= 1;
+        } else if (feverStarted && endedClaimSeconds <= 0 && waitingSeconds <= 0) {
+          resetToDefaultCycle();
+        }
 
-    renderFever();
-  }, 1000);
-}
+        renderFever();
+      }, 1000);
+    }
 
     function applyForcedView() {
       if (FORCE_FEVER_VIEW === 'default') {
@@ -1318,16 +1322,12 @@ function startCountdown() {
       }, duration);
     }
 
-    // 필요 시 다른 JS에서 호출해서 사용
     window.showFloatingToast = showFloatingToast;
 
-
-    showFloatingToast(); // 테스트용
-
+    showFloatingToast();
   })();
 
-
-(function () {
+  (function () {
     const normalButtons = document.querySelectorAll('.fever-card__help:not(.fever-card__help--expired)');
     const expiredButtons = document.querySelectorAll('.fever-card__help--expired');
 
@@ -1378,8 +1378,6 @@ function startCountdown() {
       if (expiredModal && !expiredModal.hidden) closeModal(expiredModal);
     });
   })();
-
-
 </script>
 
 
